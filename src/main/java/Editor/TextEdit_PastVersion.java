@@ -9,11 +9,11 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public final class TextEdit extends JFrame implements ActionListener {
+public final class TextEdit_PastVersion extends JFrame implements ActionListener {
     private static JTextArea area;
     private static JFrame frame;
 
-    public TextEdit() {
+    public TextEdit_PastVersion() {
         run();
     }
 
@@ -24,7 +24,7 @@ public final class TextEdit extends JFrame implements ActionListener {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(TextEdit.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TextEdit_PastVersion.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         // 设置窗口属性
