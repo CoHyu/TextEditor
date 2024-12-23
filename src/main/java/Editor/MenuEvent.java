@@ -1,7 +1,15 @@
 package Editor;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.MenuItem;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class MenuEvent implements ActionListener{
     private MenuItem newfile;
     private MenuItem openfile;
@@ -16,6 +24,8 @@ public class MenuEvent implements ActionListener{
     private MenuItem uioedit;
     private MenuItem sotext;
     private MenuItem titext;
+    private JTextArea textArea;
+
     //	private MenuItem ItemArr[]= {openFileItem,newFileItem,};
     public MenuEvent(MenuItem newfile, MenuItem openfile, MenuItem openfolder, MenuItem timeopens, MenuItem autoline, MenuItem savedit, MenuItem copyedit, MenuItem saedit, MenuItem tuiedit, MenuItem jinedit, MenuItem uioedit, MenuItem sotext, MenuItem titext) {
         this.newfile = newfile;
@@ -54,7 +64,23 @@ public class MenuEvent implements ActionListener{
         if (menuItem.equals(newfile)) {
             // 在这里编写新文件的逻辑
         } else if (menuItem.equals(openfile)) {
-            // 在这里编写打开文件的逻辑功能
+            JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+            jfc.setDialogTitle("Open File");
+            int returnValue = jfc.showOpenDialog(null);
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                File file = jfc.getSelectedFile();
+                try (FileReader reader = new FileReader(file); Scanner scanner = new Scanner(reader)) {
+                    StringBuilder content = new StringBuilder();
+                    while (scanner.hasNextLine()) {
+                        content.append(scanner.nextLine()).append("\n");
+                    }
+                    textArea.setText(content.toString());
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
         } else if (menuItem.equals(openfolder)) {
             // 在这里编写打开文件夹的逻辑功能
         } else if (menuItem.equals(timeopens)) {
