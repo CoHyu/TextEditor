@@ -298,7 +298,7 @@ public class EditFrame extends Frame{
         StyleContext styleContext = new StyleContext();
         Style defaultStyle = styleContext.getStyle(StyleContext.DEFAULT_STYLE);
 
-        StyleConstants.setFontFamily(defaultStyle, "微软雅黑");
+        StyleConstants.setFontFamily(defaultStyle, "宋体");
         StyleConstants.setFontSize(defaultStyle, 26);
         StyleConstants.setForeground(defaultStyle, Color.BLACK);
 
